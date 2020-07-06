@@ -1,10 +1,6 @@
 import { randomInt, randomFloat, randomGaussian } from './utils/random.js'
 import { ZoneMap } from './utils/zonemap.js'
 
-const paper = require('paper/dist/paper-core')
-const p = {}
-paper.install(p)
-
 function sleep(milliseconds) {
   const date = Date.now();
   let currentDate = null;
@@ -76,18 +72,13 @@ export function grow(width, height, mask, renderer) {
     )
 
     // Atempt to place new node
-    let parentPosition = new p.Point(parentNode.x, parentNode.y)
-    let vector = new p.Point({
-      length: parentNode.r,
-      angle: node.theta
-    })
-    let newPoint = parentPosition.add(vector)
-    node.x = newPoint.x
-    node.y = newPoint.y
+    let [vx, vy] = vector(node.theta, parentNode.r)
+    node.x = parentNode.x + vx
+    node.y = parentNode.y + vy
 
     if(!canPlaceNode(node, mask, zoneMap))
       continue
-    
+
     allNodes.push(node)
     zoneMap.addItem(node.x, node.y, node)
     parentNode.children.push(node)
@@ -99,6 +90,13 @@ export function grow(width, height, mask, renderer) {
   }
 
   renderer.done()
+}
+
+function vector(angleDeg, length) {
+  let radians = angleDeg * Math.PI / 180
+  let vx = Math.cos(radians) * length
+  let vy = Math.sin(radians) * length
+  return [vx, vy]
 }
 
 function buildRoots(numRoots, w, h, maxSeekRadius, mask) {
