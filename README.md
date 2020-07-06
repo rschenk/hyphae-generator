@@ -1,33 +1,15 @@
 # hyphae-grower
 
-Empty project.
+Draws crazy tree-like structures
 
-## Building and running on localhost
+## Installation
+This thing is served by webpack dev server. You'll need a node/npm setup. From there...
 
-First install dependencies:
-
-```sh
+```
 npm install
+npm start
 ```
 
-To create a production build:
+## Usage
 
-```sh
-npm run build-prod
-```
-
-To create a development build:
-
-```sh
-npm run build-dev
-```
-
-## Running
-
-```sh
-node dist/bundle.js
-```
-
-## Credits
-
-Made with [createapp.dev](https://createapp.dev/)
+There is no gui yet. For now, tweak the block of constants at the beginning of the `grow()` function in `src/grower.js`
