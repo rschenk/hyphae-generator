@@ -1,0 +1,10 @@
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.render-canvas {
+  box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.15);
+}
