@@ -9,14 +9,20 @@ function sleep(milliseconds) {
   } while (currentDate - date < milliseconds);
 }
 
-export function grow(width, height, mask, renderer) {
+export function grow(params, mask, renderer) {
   const iterations = 1000000
-  const maxSeekRadius = 16
-  const minSeekRadius = 7
-  const seekRadiusDecay = 0.93
-  const numRoots = 5
-  const maxBranchAttempts = 20
-  const thetaMax = 140 // 180
+
+  const {
+    width,
+    height,
+    maxSeekRadius,
+    minSeekRadius,
+    seekRadiusDecay,
+    numRoots,
+    maxBranchAttempts,
+    angleMax,
+    branchSpacing,
+  } = params
 
   let roots,
       allNodes = [],
@@ -68,7 +74,7 @@ export function grow(width, height, mask, renderer) {
 
     // Add some squiggle to the lines
     node.theta += (
-      (1.0 - 1.0/((node.branchDepth + 1)**0.1)) * randomGaussian() * thetaMax
+      (1.0 - 1.0/((node.branchDepth + 1)**0.1)) * randomGaussian() * angleMax
     )
 
     // Atempt to place new node
@@ -76,7 +82,7 @@ export function grow(width, height, mask, renderer) {
     node.x = parentNode.x + vx
     node.y = parentNode.y + vy
 
-    if(!canPlaceNode(node, mask, zoneMap))
+    if(!canPlaceNode(node, mask, zoneMap, branchSpacing))
       continue
 
     allNodes.push(node)
@@ -122,7 +128,7 @@ function randomMember(list) {
   return list[ randomInt(list.length - 1) ]
 }
 
-function canPlaceNode(node, mask, zoneMap) {
+function canPlaceNode(node, mask, zoneMap, branchSpacing) {
   let withinMask = mask.canPlaceNode(node.x, node.y)
 
   if(!withinMask)
@@ -133,7 +139,7 @@ function canPlaceNode(node, mask, zoneMap) {
     .getItemsInAdjacentZones(node.x, node.y)
     .map (n => {
       let distanceBetweenNodes = Math.sqrt( square(node.x - n.x) + square(node.y - n.y) )
-      let isClear = n.r + node.r < distanceBetweenNodes * 2.5
+      let isClear = n.r + node.r < distanceBetweenNodes * branchSpacing
       return isClear
     })
     .every(c => c) 

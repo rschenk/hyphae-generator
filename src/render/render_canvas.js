@@ -3,6 +3,8 @@ import { schemeTableau10 } from 'd3-scale-chromatic'
 
 class RenderCanvas {
   constructor(canvasElement, w, h) {
+    this.w = w
+    this.h = h
     this.canvasElement = canvasElement
     this.ctx = canvasElement.getContext("2d")
 
@@ -16,7 +18,11 @@ class RenderCanvas {
 
     this.strokeColorScale = scaleOrdinal(schemeTableau10)
 
-    this._initializeCanvas(w, h)
+    this._initializeCanvas()
+  }
+
+  clear() {
+    this._initializeCanvas()
   }
 
   line(from, to) {
@@ -83,9 +89,9 @@ class RenderCanvas {
     }
   }
 
-  _initializeCanvas(w, h) {
-    this.canvasElement.width = w
-    this.canvasElement.height = h
+  _initializeCanvas() {
+    this.canvasElement.width = this.w
+    this.canvasElement.height = this.h
 
     // Set up retina
     const dpr = window.devicePixelRatio || 1
@@ -96,7 +102,7 @@ class RenderCanvas {
     this.ctx.scale(dpr, dpr);
 
     this.ctx.fillStyle = 'white'
-    this.ctx.rect(0, 0, w, h)
+    this.ctx.rect(0, 0, this.w, this.h)
     this.ctx.fill()
 
     this.ctx.lineCap = 'round'

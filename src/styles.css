@@ -1,10 +1,22 @@
+body {
+  margin: 0
+}
+
 #app {
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
   height: 100vh;
+  justify-content: center;
+  z-index: 1;
 }
 
 .render-canvas {
   box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+#params-container {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  z-index: 100;
 }

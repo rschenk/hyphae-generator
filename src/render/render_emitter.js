@@ -3,6 +3,12 @@ class RenderEmitter {
     this.postMessage = postMessage
   }
 
+  clear() {
+    this.postMessage({
+      cmd: 'render:clear',
+    })
+  }
+
   line(from, to) {
     this.postMessage({
       cmd: 'render:line',

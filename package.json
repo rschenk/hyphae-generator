@@ -16,13 +16,16 @@
     "d3-scale": "^3.2.1",
     "d3-scale-chromatic": "^1.5.0",
     "gaussian": "^1.1.0",
-    "paper": "^0.12.11"
+    "paper": "^0.12.11",
+    "tweakpane": "^1.5.3",
+    "typeface-droid-sans-mono": "0.0.44"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
