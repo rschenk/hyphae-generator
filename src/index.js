@@ -1,14 +1,11 @@
-require('typeface-droid-sans-mono')
 import "./styles.css";
-import "./tweakpane_theme.css";
 import { RenderCanvas as Render } from './render/render_canvas.js'
-
 import GrowWorker from './grow.worker.js'
+import { Tweakpane } from './tweakpane.js'
 
-const Tweakpane = require('tweakpane')
 
 const PARAMS = {
-  maxSeekRadius: 16,
+  maxSeekRadius: 15,
   minSeekRadius: 7,
   seekRadiusDecay: 0.93,
   numRoots: 5,

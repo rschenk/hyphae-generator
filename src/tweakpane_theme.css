@@ -1,7 +1,5 @@
 
 :root {
-  --tp-font-family: 'Droid Sans Mono';
-
   /* Base colors */
   --tp-base-background-color: hsl(230deg, 5%, 95%);
   --tp-base-shadow-color: hsla(0, 0%, 0%, 0.1);
