@@ -12,4 +12,6 @@ npm start
 
 ## Usage
 
-There is no gui yet. For now, tweak the block of constants at the beginning of the `grow()` function in `src/grower.js`
+Press the "Grow" button in the params pane a lot. Tweak things if you like.
+
+`src/grower.js` is where the magic happens
