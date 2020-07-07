@@ -10,8 +10,8 @@ const PARAMS = {
   seekRadiusDecay: 0.93,
   numRoots: 5,
   maxBranchAttempts: 20,
-  angleMax: 140,
-  branchSpacing: 2.5,
+  angleMax: 160,
+  branchSpacing: 2.7,
 }
 
 const pane = new Tweakpane({ 
