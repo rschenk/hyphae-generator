@@ -13,8 +13,8 @@
     "build-prod": "webpack -p --mode production"
   },
   "dependencies": {
-    "d3-scale": "^3.2.1",
-    "d3-scale-chromatic": "^1.5.0",
+    "d3-scale": "^4.0.2",
+    "d3-scale-chromatic": "^3.0.0",
     "gaussian": "^1.1.0",
     "paper": "^0.12.11",
     "tweakpane": "^1.5.3"
